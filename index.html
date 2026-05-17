@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnerGlobix Intro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: "Arial", sans-serif;
+      }
+      .bg-img {
+        background-image: url("images/ship-agri.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .overlay-energy {
+        background: linear-gradient(
+          135deg,
+          rgba(60, 30, 80, 0.4) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+      .overlay-agri {
+        background: linear-gradient(
+          135deg,
+          rgba(80, 100, 40, 0.4) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+      /* Mobile slider styles */
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      .swiper-pagination-bullet {
+        background: #ffffff;
+        opacity: 0.5;
+      }
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-img relative h-screen w-full overflow-hidden">
+    <!-- Header Section -->
+    <div
+      class="absolute top-0 left-0 w-full z-50 flex justify-between items-start px-6 py-8 md:px-12 pointer-events-none"
+    >
+      <!-- Spacer -->
+      <div class="w-8"></div>
+
+      <!-- Main Logo Replacement -->
+      <div class="flex flex-col items-center pointer-events-auto mt-2">
+        <div class="w-12 h-10 bg-red-500 mb-1"></div>
+        <div class="text-white text-xl md:text-2xl font-bold tracking-[0.15em]">
+          ENERGLOBIX
+        </div>
+        <div
+          class="text-blue-500 text-xs md:text-sm tracking-[0.3em] font-medium mt-1"
+        >
+          HOLDINGS
+        </div>
+      </div>
+
+      <!-- Hamburger Icon -->
+      <button
+        class="text-white pointer-events-auto hover:text-gray-300 transition mt-2"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Desktop 50/50 Layout (Visible on lg screens) -->
+    <div class="hidden lg:flex w-full h-full relative z-10">
+      <!-- Energy Left Side -->
+      <a
+        href="https://energlobixdevelopment.kasehub.com/"
+        class="w-1/2 h-full overlay-energy flex flex-col justify-center items-center hover:bg-black/40 transition duration-500 group cursor-pointer no-underline"
+      >
+        <img
+          src="images/development-logo.png"
+          alt="EnerGlobix Development"
+          class="w-64 mb-8 transition-transform group-hover:scale-105"
+        />
+        <span
+          class="border border-white/30 text-[#C2B18F] px-10 py-3 tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 bg-black uppercase inline-block"
+          >DISCOVER</span
+        >
+      </a>
+
+      <!-- Agriculture Right Side -->
+      <a
+        href="https://energlobixagriculture.kasehub.com/"
+        class="w-1/2 h-full overlay-agri flex flex-col justify-center items-center hover:bg-black/40 transition duration-500 group border-l border-white/10 cursor-pointer no-underline"
+      >
+        <img
+          src="images/agriculture-logo.png"
+          alt="EnerGlobix Agriculture"
+          class="w-64 mb-8 transition-transform group-hover:scale-105"
+        />
+        <span
+          class="border border-white/30 text-[#C2B18F] px-10 py-3 tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 bg-black uppercase inline-block"
+          >DISCOVER</span
+        >
+      </a>
+    </div>
+
+    <!-- Mobile/Tablet Slider Layout (Visible below lg screens) -->
+    <div class="lg:hidden w-full h-full relative z-10">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <!-- Energy Slide -->
+          <a
+            href="https://energlobixdevelopment.kasehub.com/"
+            class="swiper-slide overlay-energy px-4 cursor-pointer no-underline"
+          >
+            <img
+              src="images/development-logo.png"
+              alt="EnerGlobix Development"
+              class="w-56 mb-8 mx-auto"
+            />
+            <span
+              class="border border-white/30 text-[#C2B18F] px-8 py-3 tracking-widest text-sm bg-black uppercase inline-block hover:bg-white hover:text-black transition duration-300"
+              >DISCOVER</span
+            >
+          </a>
+
+          <!-- Agriculture Slide -->
+          <a
+            href="https://energlobixagriculture.kasehub.com/"
+            class="swiper-slide overlay-agri px-4 cursor-pointer no-underline"
+          >
+            <img
+              src="images/agriculture-logo.png"
+              alt="EnerGlobix Agriculture"
+              class="w-56 mb-8 mx-auto"
+            />
+            <span
+              class="border border-white/30 text-[#C2B18F] px-8 py-3 tracking-widest text-sm bg-black uppercase inline-block hover:bg-white hover:text-black transition duration-300"
+              >DISCOVER</span
+            >
+          </a>
+        </div>
+        <div class="swiper-pagination mb-8"></div>
+      </div>
+    </div>
+
+    <!-- Footer Description -->
+    <div
+      class="absolute bottom-6 left-0 w-full z-50 text-center px-4 pointer-events-none"
+    >
+      <p
+        class="text-gray-200 text-sm md:text-base font-light tracking-wide drop-shadow-lg"
+      >
+        EnerGlobix. Shaping global investment opportunities & communities
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 0,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+  </body>
+</html>
