@@ -16,11 +16,41 @@
         margin: 0;
         font-family: "Arial", sans-serif;
       }
-      .bg-img {
+      .bg-layer-1 {
         background-image: url("images/ship-agri.webp");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        animation: crossfade-1 16s infinite ease-in-out;
+      }
+      .bg-layer-2 {
+        background-image: url("images/agriculture-img.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: crossfade-2 16s infinite ease-in-out;
+      }
+      @keyframes crossfade-1 {
+        0%,
+        40%,
+        100% {
+          opacity: 1;
+        }
+        50%,
+        90% {
+          opacity: 0;
+        }
+      }
+      @keyframes crossfade-2 {
+        0%,
+        40%,
+        100% {
+          opacity: 0;
+        }
+        50%,
+        90% {
+          opacity: 1;
+        }
       }
       .overlay-energy {
         background: linear-gradient(
@@ -48,6 +78,9 @@
         justify-content: center;
         height: 100%;
       }
+      .swiper-pagination {
+        bottom: 5.5rem !important;
+      }
       .swiper-pagination-bullet {
         background: #ffffff;
         opacity: 0.5;
@@ -57,7 +90,12 @@
       }
     </style>
   </head>
-  <body class="bg-img relative h-screen w-full overflow-hidden">
+  <body class="bg-black relative h-svh w-full overflow-hidden lg:h-screen">
+    <!-- Background Layers for Crossfade Animation -->
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <div class="bg-layer-1 absolute inset-0"></div>
+      <div class="bg-layer-2 absolute inset-0"></div>
+    </div>
     <!-- Header Section -->
     <div
       class="absolute top-0 left-0 w-full z-50 flex justify-between items-start px-6 py-8 md:px-12 pointer-events-none"
@@ -72,7 +110,9 @@
           alt="EnerGlobix Holdings"
           class="h-14 md:h-16 object-contain"
         />
-        <div class="text-[#192D50] text-xs md:text-sm tracking-[0.3em] font-semibold mt-1">
+        <div
+          class="text-[#192D50] text-xs md:text-sm tracking-[0.3em] font-semibold mt-1"
+        >
           HOLDINGS
         </div>
       </div>
@@ -102,12 +142,12 @@
       <!-- Energy Left Side -->
       <a
         href="https://energlobixdevelopment.kasehub.com/"
-        class="w-1/2 h-full overlay-energy flex flex-col justify-center items-center hover:bg-black/40 transition duration-500 group cursor-pointer no-underline"
+        class="w-1/2 h-full overlay-energy flex flex-col justify-center items-center cursor-pointer no-underline"
       >
         <img
           src="images/development-logo.png"
           alt="EnerGlobix Development"
-          class="w-64 mb-8 transition-transform group-hover:scale-105"
+          class="w-64 mb-8"
         />
         <span
           class="border border-white/30 text-[#C2B18F] px-10 py-3 tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 bg-black uppercase inline-block"
@@ -118,12 +158,12 @@
       <!-- Agriculture Right Side -->
       <a
         href="https://energlobixagriculture.kasehub.com/"
-        class="w-1/2 h-full overlay-agri flex flex-col justify-center items-center hover:bg-black/40 transition duration-500 group border-l border-white/10 cursor-pointer no-underline"
+        class="w-1/2 h-full overlay-agri flex flex-col justify-center items-center border-l border-white/10 cursor-pointer no-underline"
       >
         <img
           src="images/agriculture-logo.png"
           alt="EnerGlobix Agriculture"
-          class="w-64 mb-8 transition-transform group-hover:scale-105"
+          class="w-64 mb-8"
         />
         <span
           class="border border-white/30 text-[#C2B18F] px-10 py-3 tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 bg-black uppercase inline-block"
@@ -168,7 +208,7 @@
             >
           </a>
         </div>
-        <div class="swiper-pagination mb-8"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
 
