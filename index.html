@@ -141,6 +141,12 @@
         align-items: center;
         pointer-events: auto;
         margin-top: 0.5rem; /* mt-2 */
+        text-decoration: none;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      .logo-container:hover {
+        opacity: 0.8;
       }
 
       .logo-img {
@@ -232,15 +238,34 @@
 
       .section-logo-desktop {
         width: 16rem; /* w-64 */
-        margin-bottom: 2rem; /* mb-8 */
+        margin-bottom: 0.75rem;
       }
 
       .section-logo-mobile {
         width: 14rem; /* w-56 */
-        margin-bottom: 2rem; /* mb-8 */
+        margin-bottom: 0.75rem;
         margin-left: auto;
         margin-right: auto;
         display: block;
+      }
+
+      .split-title {
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        text-indent: 0.3em; /* offset the right letter-spacing for perfect centering */
+        /* margin-top: 0.3rem; */
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .split-title {
+          font-size: 1rem;
+          margin-top: 0.5rem;
+        }
       }
 
       /* Custom Discover Button Styling */
@@ -334,7 +359,7 @@
       <div class="spacer-w"></div>
 
       <!-- Main Logo Replacement -->
-      <div class="logo-container">
+      <a href="https://energlobixholding.kasehub.com/" class="logo-container">
         <img
           src="images/top-logo.png"
           alt="EnerGlobix Holdings"
@@ -343,19 +368,21 @@
         <div class="logo-subtitle">
           HOLDINGS
         </div>
-      </div>
+      </a>
 
       <!-- Hamburger Icon -->
-      <button class="hamburger-btn" aria-label="Toggle navigation">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            d="M4 6h16M4 12h16M4 18h16"
-          ></path>
-        </svg>
-      </button>
+      <a href="https://energlobixholding.kasehub.com/">
+        <button class="hamburger-btn" aria-label="Toggle navigation">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </a>
     </div>
 
     <!-- Desktop 50/50 Layout (Visible on lg screens) -->
@@ -363,14 +390,12 @@
       <!-- Energy Left Side -->
       <div class="split-side overlay-energy">
         <img
-          src="images/development-logo.png"
-          alt="EnerGlobix Development"
+          src="images/top-logo.png"
+          alt="EnerGlobix Holdings"
           class="section-logo-desktop"
         />
-        <a
-          href="https://energlobixdevelopment.kasehub.com/"
-          class="btn-discover"
-        >
+        <h2 class="split-title">Energy</h2>
+        <a href="https://energlobix.com/" class="btn-discover">
           DISCOVER
         </a>
       </div>
@@ -378,10 +403,11 @@
       <!-- Agriculture Right Side -->
       <div class="split-side overlay-agri split-border">
         <img
-          src="images/agriculture-logo.png"
-          alt="EnerGlobix Agriculture"
+          src="images/top-logo.png"
+          alt="EnerGlobix Holdings"
           class="section-logo-desktop"
         />
+        <h2 class="split-title">Agriculture</h2>
         <a
           href="https://energlobixagriculture.kasehub.com/"
           class="btn-discover"
@@ -398,10 +424,11 @@
           <!-- Energy Slide -->
           <div class="swiper-slide overlay-energy px-4">
             <img
-              src="images/development-logo.png"
-              alt="EnerGlobix Development"
+              src="images/top-logo.png"
+              alt="EnerGlobix Holdings"
               class="section-logo-mobile"
             />
+            <h2 class="split-title">Development</h2>
             <a
               href="https://energlobixdevelopment.kasehub.com/"
               class="btn-discover"
@@ -413,10 +440,11 @@
           <!-- Agriculture Slide -->
           <div class="swiper-slide overlay-agri px-4">
             <img
-              src="images/agriculture-logo.png"
-              alt="EnerGlobix Agriculture"
+              src="images/top-logo.png"
+              alt="EnerGlobix Holdings"
               class="section-logo-mobile"
             />
+            <h2 class="split-title">Agriculture</h2>
             <a
               href="https://energlobixagriculture.kasehub.com/"
               class="btn-discover"
