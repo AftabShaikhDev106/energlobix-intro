@@ -1,10 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EnerGlobix Intro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap 5.3 CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Swiper CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -12,10 +19,41 @@
     <style>
       body,
       html {
-        height: 100%;
+        height: 100svh; /* svh for better mobile viewport height support */
         margin: 0;
         font-family: "Arial", sans-serif;
+        background-color: #000;
+        color: #fff;
       }
+
+      @media (min-width: 992px) {
+        body,
+        html {
+          height: 100vh;
+        }
+      }
+
+      /* Background layers & Crossfade Animation */
+      .bg-layers-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .bg-layer-1,
+      .bg-layer-2 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
       .bg-layer-1 {
         background-image: url("images/ship-agri.webp");
         background-size: cover;
@@ -23,6 +61,7 @@
         background-repeat: no-repeat;
         animation: crossfade-1 16s infinite ease-in-out;
       }
+
       .bg-layer-2 {
         background-image: url("images/agriculture-img.webp");
         background-size: cover;
@@ -30,6 +69,7 @@
         background-repeat: no-repeat;
         animation: crossfade-2 16s infinite ease-in-out;
       }
+
       @keyframes crossfade-1 {
         0%,
         40%,
@@ -41,6 +81,7 @@
           opacity: 0;
         }
       }
+
       @keyframes crossfade-2 {
         0%,
         40%,
@@ -52,6 +93,7 @@
           opacity: 1;
         }
       }
+
       .overlay-energy {
         background: linear-gradient(
           135deg,
@@ -59,6 +101,7 @@
           rgba(0, 0, 0, 0.6) 100%
         );
       }
+
       .overlay-agri {
         background: linear-gradient(
           135deg,
@@ -66,11 +109,168 @@
           rgba(0, 0, 0, 0.6) 100%
         );
       }
-      /* Mobile slider styles */
+
+      /* Header section layout */
+      .main-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 2rem 1.5rem; /* px-6 py-8 */
+        pointer-events: none;
+      }
+
+      @media (min-width: 768px) {
+        .main-header {
+          padding-left: 3rem;
+          padding-right: 3rem; /* md:px-12 */
+        }
+      }
+
+      .spacer-w {
+        width: 2rem; /* w-8 */
+      }
+
+      .logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        pointer-events: auto;
+        margin-top: 0.5rem; /* mt-2 */
+      }
+
+      .logo-img {
+        height: 3.5rem; /* h-14 */
+        object-fit: contain;
+      }
+
+      @media (min-width: 768px) {
+        .logo-img {
+          height: 4rem; /* md:h-16 */
+        }
+      }
+
+      .logo-subtitle {
+        color: #192d50;
+        font-size: 0.75rem; /* text-xs */
+        letter-spacing: 0.3em; /* tracking-[0.3em] */
+        font-weight: 600; /* font-semibold */
+        margin-top: 0.25rem; /* mt-1 */
+      }
+
+      @media (min-width: 768px) {
+        .logo-subtitle {
+          font-size: 0.875rem; /* md:text-sm */
+        }
+      }
+
+      .hamburger-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        padding: 0;
+        cursor: pointer;
+        pointer-events: auto;
+        margin-top: 0.5rem; /* mt-2 */
+        transition: color 0.15s ease-in-out;
+      }
+
+      .hamburger-btn:hover {
+        color: #d1d5db; /* hover:text-gray-300 */
+      }
+
+      .hamburger-btn svg {
+        width: 2rem; /* w-8 */
+        height: 2rem; /* h-8 */
+      }
+
+      /* Desktop & Mobile Splits */
+      .desktop-layout {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 10;
+      }
+
+      @media (min-width: 992px) {
+        .desktop-layout {
+          display: flex;
+        }
+      }
+
+      .mobile-layout {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 10;
+      }
+
+      @media (min-width: 992px) {
+        .mobile-layout {
+          display: none;
+        }
+      }
+
+      .split-side {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .split-border {
+        border-left: 1px solid rgba(255, 255, 255, 0.1); /* border-l border-white/10 */
+      }
+
+      .section-logo-desktop {
+        width: 16rem; /* w-64 */
+        margin-bottom: 2rem; /* mb-8 */
+      }
+
+      .section-logo-mobile {
+        width: 14rem; /* w-56 */
+        margin-bottom: 2rem; /* mb-8 */
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+
+      /* Custom Discover Button Styling */
+      .btn-discover {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #c2b18f;
+        background-color: #000;
+        padding: 0.5rem 2rem; /* px-8 py-2 */
+        letter-spacing: 0.25em; /* tracking-[0.25em] */
+        font-size: 11px; /* text-[11px] */
+        text-transform: uppercase;
+        display: inline-block;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        text-decoration: none;
+      }
+
+      .btn-discover:hover {
+        background-color: #ffffff;
+        color: #000000;
+      }
+
+      /* Mobile swiper slider overrides */
       .swiper {
         width: 100%;
         height: 100%;
       }
+
       .swiper-slide {
         display: flex;
         flex-direction: column;
@@ -78,55 +278,76 @@
         justify-content: center;
         height: 100%;
       }
+
       .swiper-pagination {
         bottom: 5.5rem !important;
       }
+
       .swiper-pagination-bullet {
         background: #ffffff;
         opacity: 0.5;
       }
+
       .swiper-pagination-bullet-active {
         opacity: 1;
       }
+
+      /* Footer */
+      .footer-container {
+        position: absolute;
+        bottom: 1.5rem; /* bottom-6 */
+        left: 0;
+        width: 100%;
+        z-index: 50;
+        text-align: center;
+        padding-left: 1rem; /* px-4 */
+        padding-right: 1rem;
+        pointer-events: none;
+      }
+
+      .footer-text {
+        color: #e5e7eb; /* text-gray-200 */
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 300; /* font-light */
+        letter-spacing: 0.025em; /* tracking-wide */
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4)); /* drop-shadow-lg */
+        margin: 0;
+      }
+
+      @media (min-width: 768px) {
+        .footer-text {
+          font-size: 1rem; /* md:text-base */
+        }
+      }
     </style>
   </head>
-  <body class="bg-black relative h-svh w-full overflow-hidden lg:h-screen">
+  <body class="bg-black overflow-hidden position-relative">
     <!-- Background Layers for Crossfade Animation -->
-    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-      <div class="bg-layer-1 absolute inset-0"></div>
-      <div class="bg-layer-2 absolute inset-0"></div>
+    <div class="bg-layers-container">
+      <div class="bg-layer-1"></div>
+      <div class="bg-layer-2"></div>
     </div>
+
     <!-- Header Section -->
-    <div
-      class="absolute top-0 left-0 w-full z-50 flex justify-between items-start px-6 py-8 md:px-12 pointer-events-none"
-    >
+    <div class="main-header">
       <!-- Spacer -->
-      <div class="w-8"></div>
+      <div class="spacer-w"></div>
 
       <!-- Main Logo Replacement -->
-      <div class="flex flex-col items-center pointer-events-auto mt-2">
+      <div class="logo-container">
         <img
           src="images/top-logo.png"
           alt="EnerGlobix Holdings"
-          class="h-14 md:h-16 object-contain"
+          class="logo-img"
         />
-        <div
-          class="text-[#192D50] text-xs md:text-sm tracking-[0.3em] font-semibold mt-1"
-        >
+        <div class="logo-subtitle">
           HOLDINGS
         </div>
       </div>
 
       <!-- Hamburger Icon -->
-      <button
-        class="text-white pointer-events-auto hover:text-gray-300 transition mt-2"
-      >
-        <svg
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+      <button class="hamburger-btn" aria-label="Toggle navigation">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -138,91 +359,84 @@
     </div>
 
     <!-- Desktop 50/50 Layout (Visible on lg screens) -->
-    <div class="hidden lg:flex w-full h-full relative z-10">
+    <div class="desktop-layout">
       <!-- Energy Left Side -->
-      <a
-        href="https://energlobixdevelopment.kasehub.com/"
-        class="w-1/2 h-full overlay-energy flex flex-col justify-center items-center cursor-pointer no-underline"
-      >
+      <div class="split-side overlay-energy">
         <img
           src="images/development-logo.png"
           alt="EnerGlobix Development"
-          class="w-64 mb-8"
+          class="section-logo-desktop"
         />
-        <span
-          class="border border-white/30 text-[#C2B18F] px-10 py-3 tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 bg-black uppercase inline-block"
-          >DISCOVER</span
+        <a
+          href="https://energlobixdevelopment.kasehub.com/"
+          class="btn-discover"
         >
-      </a>
+          DISCOVER
+        </a>
+      </div>
 
       <!-- Agriculture Right Side -->
-      <a
-        href="https://energlobixagriculture.kasehub.com/"
-        class="w-1/2 h-full overlay-agri flex flex-col justify-center items-center border-l border-white/10 cursor-pointer no-underline"
-      >
+      <div class="split-side overlay-agri split-border">
         <img
           src="images/agriculture-logo.png"
           alt="EnerGlobix Agriculture"
-          class="w-64 mb-8"
+          class="section-logo-desktop"
         />
-        <span
-          class="border border-white/30 text-[#C2B18F] px-10 py-3 tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 bg-black uppercase inline-block"
-          >DISCOVER</span
+        <a
+          href="https://energlobixagriculture.kasehub.com/"
+          class="btn-discover"
         >
-      </a>
+          DISCOVER
+        </a>
+      </div>
     </div>
 
     <!-- Mobile/Tablet Slider Layout (Visible below lg screens) -->
-    <div class="lg:hidden w-full h-full relative z-10">
+    <div class="mobile-layout">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <!-- Energy Slide -->
-          <a
-            href="https://energlobixdevelopment.kasehub.com/"
-            class="swiper-slide overlay-energy px-4 cursor-pointer no-underline"
-          >
+          <div class="swiper-slide overlay-energy px-4">
             <img
               src="images/development-logo.png"
               alt="EnerGlobix Development"
-              class="w-56 mb-8 mx-auto"
+              class="section-logo-mobile"
             />
-            <span
-              class="border border-white/30 text-[#C2B18F] px-8 py-3 tracking-widest text-sm bg-black uppercase inline-block hover:bg-white hover:text-black transition duration-300"
-              >DISCOVER</span
+            <a
+              href="https://energlobixdevelopment.kasehub.com/"
+              class="btn-discover"
             >
-          </a>
+              DISCOVER
+            </a>
+          </div>
 
           <!-- Agriculture Slide -->
-          <a
-            href="https://energlobixagriculture.kasehub.com/"
-            class="swiper-slide overlay-agri px-4 cursor-pointer no-underline"
-          >
+          <div class="swiper-slide overlay-agri px-4">
             <img
               src="images/agriculture-logo.png"
               alt="EnerGlobix Agriculture"
-              class="w-56 mb-8 mx-auto"
+              class="section-logo-mobile"
             />
-            <span
-              class="border border-white/30 text-[#C2B18F] px-8 py-3 tracking-widest text-sm bg-black uppercase inline-block hover:bg-white hover:text-black transition duration-300"
-              >DISCOVER</span
+            <a
+              href="https://energlobixagriculture.kasehub.com/"
+              class="btn-discover"
             >
-          </a>
+              DISCOVER
+            </a>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
     </div>
 
     <!-- Footer Description -->
-    <div
-      class="absolute bottom-6 left-0 w-full z-50 text-center px-4 pointer-events-none"
-    >
-      <p
-        class="text-gray-200 text-sm md:text-base font-light tracking-wide drop-shadow-lg"
-      >
+    <div class="footer-container">
+      <p class="footer-text">
         EnerGlobix. Shaping global investment opportunities & communities
       </p>
     </div>
 
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       var swiper = new Swiper(".mySwiper", {
