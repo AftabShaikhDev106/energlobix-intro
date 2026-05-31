@@ -11,11 +11,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <!-- Swiper CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+
 
     <!-- Image Preloads -->
     <link rel="preload" href="images/top-logo.png" as="image" />
@@ -64,7 +60,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        animation: crossfade-1 16s infinite ease-in-out;
+        animation: crossfade-1 4s infinite ease-in-out;
       }
 
       .bg-layer-2 {
@@ -72,7 +68,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        animation: crossfade-2 16s infinite ease-in-out;
+        animation: crossfade-2 4s infinite ease-in-out;
       }
 
       @keyframes crossfade-1 {
@@ -187,7 +183,7 @@
         display: none;
       }
 
-      @media (min-width: 768px) {
+      @media (min-width: 992px) {
         .header-spacer {
           display: block;
           width: 2rem; /* matches hamburger svg width for perfect logo centering */
@@ -195,7 +191,7 @@
       }
 
       .logo-img {
-        height: 3.5rem; /* h-14 */
+        height: 2.8rem; /* h-11 */
         object-fit: contain;
       }
 
@@ -207,10 +203,10 @@
 
       .logo-subtitle {
         color: #192d50;
-        font-size: 0.75rem; /* text-xs */
-        letter-spacing: 0.3em; /* tracking-[0.3em] */
-        font-weight: 500; /* font-semibold */
-        margin-top: 0.25rem; /* mt-1 */
+        font-size: 0.6rem; /* text-[10px] */
+        letter-spacing: 0.35em; /* slightly increased spacing for premium look at smaller size */
+        font-weight: 500;
+        margin-top: 0.25rem;
       }
 
       @media (min-width: 768px) {
@@ -239,83 +235,101 @@
         height: 2rem; /* h-8 */
       }
 
-      /* Desktop & Mobile Splits */
-      .desktop-layout {
-        display: none;
+      /* Main Split Layout (Up/down on mobile, Side-by-side on tablet/desktop) */
+      .main-layout {
+        display: flex;
+        flex-direction: column;
         width: 100%;
         height: 100%;
         position: relative;
         z-index: 10;
       }
 
-      @media (min-width: 992px) {
-        .desktop-layout {
-          display: flex;
-        }
-      }
-
-      .mobile-layout {
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        z-index: 10;
-      }
-
-      @media (min-width: 992px) {
-        .mobile-layout {
-          display: none;
+      @media (min-width: 768px) {
+        .main-layout {
+          flex-direction: row;
         }
       }
 
       .split-side {
-        width: 50%;
-        height: 100%;
+        width: 100%;
+        height: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 1.5rem;
+        box-sizing: border-box;
+      }
+
+      /* Spacing to prevent overlay with the absolute header on mobile */
+      .split-side:first-child {
+        padding-top: 5.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .split-side {
+          width: 50%;
+          height: 100%;
+          padding: 2rem;
+        }
+        .split-side:first-child {
+          padding-top: 2rem; /* reset since it's side-by-side on tablet */
+        }
       }
 
       .split-border {
-        border-left: 1px solid rgba(255, 255, 255, 0.1); /* border-l border-white/10 */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-      .section-logo-desktop {
-        width: 16rem; /* w-64 */
-        margin-bottom: 0.75rem;
+      @media (min-width: 768px) {
+        .split-border {
+          border-top: none;
+          border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
       }
 
-      .section-logo-mobile {
-        width: 14rem; /* w-56 */
-        margin-bottom: 0.75rem;
-        margin-left: auto;
-        margin-right: auto;
+      .section-logo {
         display: block;
+        width: 8rem;
+        margin-bottom: 0.2rem;
+      }
+
+      @media (min-width: 768px) {
+        .section-logo {
+          width: 12rem;
+          
+        }
+      }
+
+      @media (min-width: 992px) {
+        .section-logo {
+          width: 16rem;
+          
+        }
       }
 
       .split-title {
         color: #ffffff;
-        font-size: 0.75rem;
+        font-size: 1rem;
         font-weight: 500;
-        letter-spacing: 0.3em;
-        text-indent: 0.3em; /* offset the right letter-spacing for perfect centering */
-        /* margin-top: 0.3rem; */
-        margin-bottom: 2rem;
+        letter-spacing: 0.1em;        
+        margin-bottom: 1.5rem;
         text-transform: uppercase;
         text-align: center;
       }
 
-      @media (min-width: 768px) {
+      @media (min-width: 992px) {
         .split-title {
-          font-size: 1rem;
+          font-size: 1.25rem;
           margin-top: 0.5rem;
+          margin-bottom: 2rem;
         }
       }
 
       /* Custom Discover Button Styling */
       .btn-discover {
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(194, 177, 143, 0.4);
         color: #c2b18f;
         background-color: #000;
         padding: 0.5rem 2rem; /* px-8 py-2 */
@@ -324,72 +338,54 @@
         text-transform: uppercase;
         display: inline-block;
         font-weight: 500;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         text-decoration: none;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      .btn-discover:hover {
-        background-color: #ffffff;
-        color: #000000;
+      /* Hover effects - Desktop only to avoid sticky hover on mobile */
+      @media (hover: hover) {
+        .btn-discover:hover {
+          background-color: #000;
+          color: #ffffff;
+          border-color: #c2b18f;
+          box-shadow: 0 0 15px rgba(194, 177, 143, 0.5);
+          transform: translateY(-2px);
+        }
       }
 
-      /* Mobile swiper slider overrides */
-      .swiper {
-        width: 100%;
-        height: 100%;
-      }
-
-      .swiper-slide {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-      }
-
-      .swiper-pagination {
-        bottom: 5.5rem !important;
-      }
-
-      .swiper-pagination-bullet {
-        background: #ffffff;
-        opacity: 0.5;
-      }
-
-      .swiper-pagination-bullet-active {
-        opacity: 1;
+      /* Press effect - Mobile and Desktop */
+      .btn-discover:active {
+        background-color: #000;
+        color: #ffffff;
+        border-color: #c2b18f;
+        box-shadow: 0 0 25px rgba(194, 177, 143, 0.8);
+        transform: scale(0.95) translateY(0);
+        transition: all 0.05s ease;
       }
 
       /* Footer Tagline below Logo */
       .footer-text {
-        color: #e5e7eb; /* text-gray-200 */
-        font-size: 0.85rem; /* mobile base */
-        font-weight: 300; /* font-light */
-        letter-spacing: 0.025em; /* tracking-wide */
-        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4)); /* drop-shadow-lg */
-        margin: 1rem 0 0 0;
-        width: 100%;
-        padding-left: 16px;
-        padding-right: 16px;
-        text-align: center;
-        line-height: 1.4;
-        pointer-events: none;
-      }
-
-      @media (min-width: 768px) {
-        .footer-text {
-          font-size: 1rem; /* tablet */
-          margin-top: 1.3rem;
-          max-width: 600px;
-        }
+        display: none; /* hidden on mobile and tablet */
       }
 
       @media (min-width: 992px) {
         .footer-text {
-          font-size: 1.15rem; /* desktop */
-          margin-top: 2rem;
+          display: block; /* shown on desktop only */
+          color: #e5e7eb;
+          font-size: 1.15rem;
+          font-weight: 300;
+          letter-spacing: 0.025em;
+          filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+          margin: 1.2rem 0 0 0;
+          width: 100%;
+          padding-left: 16px;
+          padding-right: 16px;
+          text-align: center;
+          line-height: 1.4;
+          pointer-events: none;
           max-width: 750px;
         }
       }
@@ -696,14 +692,14 @@
       </p>
     </div>
 
-    <!-- Desktop 50/50 Layout (Visible on lg screens) -->
-    <div class="desktop-layout">
-      <!-- Energy Left Side -->
+    <!-- Main Split Layout (Up/Down on mobile, Side-by-Side on desktop) -->
+    <div class="main-layout">
+      <!-- Energy Side -->
       <div class="split-side overlay-energy">
         <img
           src="images/top-logo.png"
           alt="EnerGlobix Holdings"
-          class="section-logo-desktop"
+          class="section-logo"
         />
         <h2 class="split-title">Energy</h2>
         <a href="https://energlobix.com/" class="btn-discover">
@@ -711,12 +707,12 @@
         </a>
       </div>
 
-      <!-- Agriculture Right Side -->
+      <!-- Agriculture Side -->
       <div class="split-side overlay-agri split-border">
         <img
           src="images/top-logo.png"
           alt="EnerGlobix Holdings"
-          class="section-logo-desktop"
+          class="section-logo"
         />
         <h2 class="split-title">Agriculture</h2>
         <a
@@ -728,56 +724,7 @@
       </div>
     </div>
 
-    <!-- Mobile/Tablet Slider Layout (Visible below lg screens) -->
-    <div class="mobile-layout">
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <!-- Energy Slide -->
-          <div class="swiper-slide overlay-energy px-4">
-            <img
-              src="images/top-logo.png"
-              alt="EnerGlobix Holdings"
-              class="section-logo-mobile"
-            />
-            <h2 class="split-title">Development</h2>
-            <a
-              href="https://energlobixdevelopment.kasehub.com/"
-              class="btn-discover"
-            >
-              DISCOVER
-            </a>
-          </div>
-
-          <!-- Agriculture Slide -->
-          <div class="swiper-slide overlay-agri px-4">
-            <img
-              src="images/top-logo.png"
-              alt="EnerGlobix Holdings"
-              class="section-logo-mobile"
-            />
-            <h2 class="split-title">Agriculture</h2>
-            <a
-              href="https://energlobixagriculture.kasehub.com/"
-              class="btn-discover"
-            >
-              DISCOVER
-            </a>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 0,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
 
       // Menu Toggle Logic
       const openBtn = document.getElementById("open-menu-btn");
