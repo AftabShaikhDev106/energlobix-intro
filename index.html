@@ -262,9 +262,11 @@
         box-sizing: border-box;
       }
 
-      /* Spacing to prevent overlay with the absolute header on mobile */
-      .split-side:first-child {
-        padding-top: 5.5rem;
+      @media (max-width: 767.98px) {
+        .split-side.overlay-agri {
+          justify-content: flex-start;
+          padding-top: 5.5rem;
+        }
       }
 
       @media (min-width: 768px) {
@@ -272,9 +274,6 @@
           width: 50%;
           height: 100%;
           padding: 2rem;
-        }
-        .split-side:first-child {
-          padding-top: 2rem; /* reset since it's side-by-side on tablet */
         }
       }
 
@@ -329,6 +328,7 @@
 
       /* Custom Discover Button Styling */
       .btn-discover {
+        font-family: "Adelle-Sans-Regular", sans-serif !important;
         border: 1px solid rgba(194, 177, 143, 0.4);
         color: #c2b18f;
         background-color: #000;
