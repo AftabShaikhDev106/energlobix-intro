@@ -275,6 +275,38 @@
           height: 100%;
           padding: 2rem;
         }
+        .split-side.overlay-energy {
+          align-items: flex-end;
+        }
+        .split-side.overlay-agri {
+          align-items: flex-start;
+        }
+        .split-side.overlay-energy .split-content {
+          margin-right: 6vw;
+        }
+        .split-side.overlay-agri .split-content {
+          margin-left: 6vw;
+        }
+      }
+
+      .split-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 8rem;
+      }
+
+      @media (min-width: 768px) {
+        .split-content {
+          max-width: 12rem;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .split-content {
+          max-width: 16rem;
+        }
       }
 
       .split-border {
@@ -476,6 +508,7 @@
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
         overflow-y: auto;
+        box-sizing: border-box;
       }
 
       .nav-menu-container.active {
@@ -501,156 +534,181 @@
       /* Desktop dropdown styling */
       @media (min-width: 992px) {
         .nav-menu-container {
-          position: absolute;
-          top: 100%;
-          right: 0;
-          left: auto;
-          width: 250px;
-          height: auto;
-          background-color: rgba(0, 0, 0, 0.95);
-          backdrop-filter: blur(8px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 0.5rem;
-          z-index: 100;
-          padding: 0.5rem 0;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(-10px);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          overflow-y: visible; /* to allow submenus to fly out */
+          position: absolute !important;
+          top: 100% !important;
+          right: 0 !important;
+          left: auto !important;
+          width: 250px !important;
+          height: auto !important;
+          background-color: rgba(0, 0, 0, 0.95) !important;
+          backdrop-filter: blur(8px) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+          border-radius: 0.5rem !important;
+          z-index: 1000 !important;
+          padding: 0.5rem 0 !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transform: translateY(-10px) !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          overflow-y: visible !important; /* to allow submenus to fly out */
         }
 
         .nav-menu-container.active {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-          pointer-events: auto;
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: translateY(0) !important;
+          pointer-events: auto !important;
         }
 
         .close-menu-btn {
-          display: none;
+          display: none !important;
         }
       }
 
       .nav-menu-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        width: 100% !important;
       }
 
       .nav-menu-item {
-        margin: 0;
+        margin: 0 !important;
+        width: 100% !important;
+        text-align: left !important;
+        padding: 0 !important;
       }
 
       .nav-menu-link {
-        color: #fff;
-        font-size: 0.9rem;
-        font-weight: 400;
-        letter-spacing: 0.1em;
-        text-decoration: none;
-        text-transform: uppercase;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 1.5rem;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        color: #fff !important;
+        font-size: 0.9rem !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.1em !important;
+        text-decoration: none !important;
+        text-transform: uppercase !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 1rem 1.5rem !important;
+        transition: background-color 0.2s ease, color 0.2s ease !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
 
       .nav-menu-link:hover {
-        color: #c2b18f;
-        background-color: rgba(255, 255, 255, 0.05);
+        color: #c2b18f !important;
+        background-color: rgba(255, 255, 255, 0.05) !important;
       }
 
       /* Submenu styles */
       .nav-submenu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        width: 100% !important;
       }
 
       .submenu-link {
-        color: #fff;
-        text-decoration: none;
-        transition: color 0.2s ease, background-color 0.2s ease;
+        color: #fff !important;
+        text-decoration: none !important;
+        transition: color 0.2s ease, background-color 0.2s ease !important;
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        text-align: left !important;
       }
 
       .submenu-arrow {
-        transition: transform 0.2s ease-in-out;
-        margin-left: 0.5rem;
-        vertical-align: middle;
+        transition: transform 0.2s ease-in-out !important;
+        margin-left: 0.5rem !important;
+        vertical-align: middle !important;
       }
 
       /* Mobile/Tablet Submenu Accordion styles */
       @media (max-width: 991.98px) {
         .nav-submenu {
-          display: none;
-          padding-left: 1.5rem;
-          margin: 0.5rem 0 1rem 0;
+          display: none !important;
+          padding-left: 1.5rem !important;
+          /* margin: 0.5rem 0 1rem 0 !important; */
         }
 
         .nav-submenu.open {
-          display: block;
+          display: flex !important;
+          flex-direction: column !important;
         }
 
         .submenu-link {
-          color: #ccc;
-          font-size: 0.9rem;
-          display: block;
-          padding: 0.6rem 0;
+          color: #ccc !important;
+          font-size: 0.9rem !important;
+          display: block !important;
+          padding: 0.6rem 0 !important;
         }
 
         .submenu-link:hover {
-          color: #c2b18f;
+          color: #c2b18f !important;
         }
 
         .has-submenu.active > .nav-menu-link .submenu-arrow {
-          transform: rotate(180deg);
+          transform: rotate(180deg) !important;
         }
       }
 
-      /* Desktop flyout submenus */
+      /* Desktop inline expanding submenus */
       @media (min-width: 992px) {
         .nav-menu-item {
-          position: relative;
+          position: relative !important;
         }
 
         .nav-submenu {
-          position: absolute;
-          top: 0;
-          right: 100%; /* floats to the left */
-          margin-right: 0.5rem;
-          width: 220px;
-          background-color: rgba(0, 0, 0, 0.95);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 0.5rem;
-          padding: 0.5rem 0;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateX(10px);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative !important;
+          top: auto !important;
+          right: auto !important;
+          left: auto !important;
+          margin: 0 !important;
+          width: 100% !important;
+          background-color: transparent !important;
+          backdrop-filter: none !important;
+          border: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s ease !important;
         }
 
-        .nav-menu-item.has-submenu:hover > .nav-submenu {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(0);
+        .nav-submenu.open {
+          opacity: 1 !important;
+          visibility: visible !important;
+          max-height: 300px !important;
         }
 
         .submenu-link {
-          font-size: 0.9rem;
-          text-transform: uppercase;
-          display: block;
-          padding: 0.75rem 1.5rem;
+          font-size: 0.9rem !important;
+          text-transform: uppercase !important;
+          display: block !important;
+          padding: 0.75rem 2.5rem !important;
         }
 
         .submenu-link:hover {
-          color: #c2b18f;
-          background-color: rgba(255, 255, 255, 0.05);
+          color: #c2b18f !important;
+          background-color: rgba(255, 255, 255, 0.05) !important;
         }
 
         .submenu-arrow {
-          transform: rotate(270deg); /* point right on desktop dropdown */
+          transform: none !important;
+          transition: transform 0.2s ease-in-out !important;
+        }
+
+        .has-submenu.active > .nav-menu-link .submenu-arrow {
+          transform: rotate(180deg) !important;
         }
       }
     </style>
@@ -760,31 +818,35 @@
     <div class="main-layout">
       <!-- Energy Side -->
       <div class="split-side overlay-energy">
-        <img
-          src="images/top-logo.png"
-          alt="EnerGlobix Holdings"
-          class="section-logo"
-        />
-        <h2 class="split-title">Energy</h2>
-        <a href="https://energlobix.com/" class="btn-discover">
-          DISCOVER
-        </a>
+        <div class="split-content">
+          <img
+            src="images/top-logo.png"
+            alt="EnerGlobix Holdings"
+            class="section-logo"
+          />
+          <h2 class="split-title">Energy</h2>
+          <a href="https://energlobix.com/" class="btn-discover">
+            DISCOVER
+          </a>
+        </div>
       </div>
 
       <!-- Agriculture Side -->
       <div class="split-side overlay-agri split-border">
-        <img
-          src="images/top-logo.png"
-          alt="EnerGlobix Holdings"
-          class="section-logo"
-        />
-        <h2 class="split-title">Agriculture</h2>
-        <a
-          href="https://energlobixagriculture.kasehub.com/"
-          class="btn-discover"
-        >
-          DISCOVER
-        </a>
+        <div class="split-content">
+          <img
+            src="images/top-logo.png"
+            alt="EnerGlobix Holdings"
+            class="section-logo"
+          />
+          <h2 class="split-title">Agriculture</h2>
+          <a
+            href="https://energlobixagriculture.kasehub.com/"
+            class="btn-discover"
+          >
+            DISCOVER
+          </a>
+        </div>
       </div>
     </div>
 
@@ -814,31 +876,28 @@
         }
       });
 
-      // Submenu Accordion Toggle for Mobile/Tablet
+      // Submenu Accordion Toggle (Mobile and Desktop)
       const submenuToggles = document.querySelectorAll(".toggle-submenu");
       
       submenuToggles.forEach(toggle => {
         toggle.addEventListener("click", (e) => {
-          // Only execute on mobile/tablet (below 992px)
-          if (window.innerWidth < 992) {
-            e.preventDefault();
-            e.stopPropagation();
-            const parentLi = toggle.closest(".has-submenu");
-            const submenu = parentLi.querySelector(".nav-submenu");
-            
-            const isOpen = submenu.classList.contains("open");
-            
-            // Close other submenus first (accordion behavior)
-            document.querySelectorAll(".nav-submenu").forEach(sub => {
-              if (sub !== submenu) sub.classList.remove("open");
-            });
-            document.querySelectorAll(".has-submenu").forEach(li => {
-              if (li !== parentLi) li.classList.remove("active");
-            });
-            
-            submenu.classList.toggle("open");
-            parentLi.classList.toggle("active");
-          }
+          e.preventDefault();
+          e.stopPropagation();
+          const parentLi = toggle.closest(".has-submenu");
+          const submenu = parentLi.querySelector(".nav-submenu");
+          
+          const isOpen = submenu.classList.contains("open");
+          
+          // Close other submenus first (accordion behavior)
+          document.querySelectorAll(".nav-submenu").forEach(sub => {
+            if (sub !== submenu) sub.classList.remove("open");
+          });
+          document.querySelectorAll(".has-submenu").forEach(li => {
+            if (li !== parentLi) li.classList.remove("active");
+          });
+          
+          submenu.classList.toggle("open");
+          parentLi.classList.toggle("active");
         });
       });
     </script>
